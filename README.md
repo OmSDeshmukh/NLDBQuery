@@ -40,6 +40,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+5. Configure .env files accordingly with the required API keys and password of the database
+
 ## Usage
 
 To run inference and interact with the database, follow these instructions:

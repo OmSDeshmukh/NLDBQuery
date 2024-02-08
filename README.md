@@ -1,4 +1,4 @@
-# Gemini Pro LLM NLP Project
+# NLDBQuery
 
 Welcome to the Gemini Pro Large Language Model (LLM) NLP project! This project aims to facilitate interaction with a database using plain English queries through Google's free Gemini Pro LLM. Various frameworks such as Lang Chain and Hugging Face were employed to enhance model accuracy using few-shot learning techniques. Additionally, vector databases(ChromaDB) were utilized in the process to further refine the results.
 
@@ -55,6 +55,4 @@ streamlit run main.py
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-```vbnet
 Feel free to customize it further according to your project's specific details and requirements.
-```

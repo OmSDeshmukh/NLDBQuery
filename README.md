@@ -42,7 +42,18 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-5. Configure .env files accordingly with the required API keys and password of the database
+6. Create database:
+
+```bash
+# Login
+mysql -u username -p password
+
+# Create Database
+CREATE DATABASE atliq_tshirts < db_creation_atliq_t_shirts.sql;
+```
+
+
+7. Configure .env files accordingly with the required API keys and password of the database
 
 ## Usage
 
@@ -54,6 +65,8 @@ Run the following script:
 ```bash
 streamlit run main.py
 ```
+## Aknowledgement
+Special thanks to Codebasics whose YouTube video provided valuable insights and guidance in creating this project.
 
 ## License
 

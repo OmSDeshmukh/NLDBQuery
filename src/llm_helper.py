@@ -13,17 +13,17 @@ from langchain.prompts import SemanticSimilarityExampleSelector
 from langchain.prompts.prompt import PromptTemplate
 from langchain.prompts import FewShotPromptTemplate
 
-
 # set of pre written suffix and prefix for our prompts
 from langchain.chains.sql_database.prompt import PROMPT_SUFFIX, _mysql_prompt
 
 # loading the environment variable
 load_dotenv()
+
+# using the api for loading the model
+llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=os.environ['GOOGLE_API_KEY'])
+
     
 def get_dbs_chain():
-    # using the api for loading the model
-    llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=os.environ['GOOGLE_API_KEY'])
-
     # setting up the database
     db_user = "root"
     db_host = "localhost"
@@ -33,7 +33,7 @@ def get_dbs_chain():
 
     # Setting up the chain for the llm to answer according to the database using Langchain
     # Note that this chain is the default one where the llm is directly answering from the database 
-    db_chain = SQLDatabaseChain.from_llm(llm, db, verbose = True)
+    # db_chain = SQLDatabaseChain.from_llm(llm, db, verbose = True)
 
     # Since the above chain is not good enough in accuracy because the llm is answering on the basis of its own capabilities without looking at the column names or other info
     # Hence we need few shot learning
@@ -65,3 +65,9 @@ def get_dbs_chain():
     # Setting up the final Database answering chain which will return the answers
     new_db_chain = SQLDatabaseChain(llm=llm, database=db,prompt=few_shot_template)
     return new_db_chain
+
+def llm_infer(question):
+    new_db_chain = get_dbs_chain()
+    answer = new_db_chain.run(question)
+    temp = f"The question is {question}. Its answer is  {answer}. Frame the answer according to the given question "
+    return llm.invoke(temp)

@@ -68,8 +68,8 @@ streamlit run main.py
 ## Aknowledgement
 Special thanks to Codebasics whose YouTube video provided valuable insights and guidance in creating this project.
 
-## License
 
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Feel free to customize it further according to your project's specific details and requirements.
